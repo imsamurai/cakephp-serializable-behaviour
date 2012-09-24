@@ -14,7 +14,11 @@ or if you use git add as submodule:
 
 	cd my_cake_app
 	git submodule add "git://github.com/imsamurai/cakephp-serializable-behaviour.git" "app/Plugin/Serializable"
-  
+
+then add plugin loading in Config/bootstrap.php
+
+	CakePlugin::load('Serializable');
+
 ## Configuration
 
 Write global config if you need to use custom serialization function:
