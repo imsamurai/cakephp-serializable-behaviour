@@ -1,4 +1,4 @@
-cakephp-serializable-behaviour
+CakePHP Serializable Behaviour
 ==============================
 
 Serializable Behaviour for CakePHP 2.1+
