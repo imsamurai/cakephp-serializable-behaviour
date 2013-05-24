@@ -13,14 +13,14 @@ class SerializableBehavior extends ModelBehavior {
 
     /**
      * Contains configuration for each model
-     * 
-     * @var array 
+     *
+     * @var array
      */
     public $config;
 
     /**
      * Initialize Serializable Behavior
-     * 
+     *
      * @param Model $Model Model which uses behaviour
      * @param array $config Behaviour config
      */
@@ -35,17 +35,20 @@ class SerializableBehavior extends ModelBehavior {
 
     /**
      * After find callback. Unserializes all specified fields in each result
-     * 
+     *
      * @param Model $model Model using this behavior
      * @param mixed $results The results of the find operation
      * @param boolean $primary Whether this model is being queried directly (vs. being queried as an association)
      * @return array
      */
     public function afterFind(Model $Model, $results, $primary = false) {
-        foreach ($results as &$result) {
+        foreach ($results as $key => &$result) {
             foreach ($this->config[$Model->alias]['fields'] as $field) {
-                if (isset($result[$Model->alias][$field]))
+                if (isset($result[$Model->alias][$field])) {
                     $result[$Model->alias][$field] = $this->_unserialize($Model->alias, $result[$Model->alias][$field]);
+				} elseif ($key === $field) {
+					$result = $this->_unserialize($Model->alias, $result);
+				}
             }
         }
         unset($result);
@@ -54,7 +57,7 @@ class SerializableBehavior extends ModelBehavior {
 
     /**
      * Before save callback. Serializes all specified fields in model data
-     * 
+     *
      * @param Model $Model Model using this behavior
      * @return boolean True
      */
@@ -62,7 +65,9 @@ class SerializableBehavior extends ModelBehavior {
         foreach ($this->config[$Model->alias]['fields'] as $field) {
             if (isset($Model->data[$Model->alias][$field])) {
                 $Model->data[$Model->alias][$field] = $this->_serialize($Model->alias, $Model->data[$Model->alias][$field]);
-            }
+            } elseif (isset($Model->data[$field])) {
+				$Model->data[$field] = $this->_serialize($Model->alias, $Model->data[$field]);
+			}
         }
         return true;
     }
@@ -70,7 +75,7 @@ class SerializableBehavior extends ModelBehavior {
     /**
      * Invokes serialization. Serialization function is set by
      * globall config, model config or defaults to `serialize`
-     * 
+     *
      * @param string $alias Model using this behavior alias
      * @param mixed $data Data to serialize
      * @return string Serialized data
@@ -82,7 +87,7 @@ class SerializableBehavior extends ModelBehavior {
     /**
      * Invokes unserialization. Unserialization function is set by
      * globall config, model config or defaults to `unserialize`
-     * 
+     *
      * @param string $alias Model using this behavior alias
      * @param mixed $data Data to serialize
      * @return mixed Unserialized data
