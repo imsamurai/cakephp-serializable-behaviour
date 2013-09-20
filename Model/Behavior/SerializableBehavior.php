@@ -11,89 +11,101 @@
  */
 class SerializableBehavior extends ModelBehavior {
 
-    /**
-     * Contains configuration for each model
-     *
-     * @var array
-     */
-    public $config;
+	/**
+	 * Contains configuration for each model
+	 *
+	 * @var array
+	 */
+	public $config;
 
-    /**
-     * Initialize Serializable Behavior
-     *
-     * @param Model $Model Model which uses behaviour
-     * @param array $config Behaviour config
-     */
-    public function setup(Model $Model, $config = array()) {
-        parent::setup($Model, $config);
-        $this->config[$Model->alias] = $config + (array) Configure::read('Serializable') + array(
-            'fields' => array(),
-            'serialize' => 'serialize',
-            'unserialize' => 'unserialize',
-        );
-    }
+	/**
+	 * Initialize Serializable Behavior
+	 *
+	 * @param Model $Model Model which uses behaviour
+	 * @param array $config Behaviour config
+	 */
+	public function setup(Model $Model, $config = array()) {
+		parent::setup($Model, $config);
+		$this->config[$Model->alias] = $config + (array) Configure::read('Serializable') + array(
+			'fields' => array(),
+			'serialize' => 'serialize',
+			'unserialize' => 'unserialize',
+		);
+	}
 
-    /**
-     * After find callback. Unserializes all specified fields in each result
-     *
-     * @param Model $model Model using this behavior
-     * @param mixed $results The results of the find operation
-     * @param boolean $primary Whether this model is being queried directly (vs. being queried as an association)
-     * @return array
-     */
-    public function afterFind(Model $Model, $results, $primary = false) {
-        foreach ($results as $key => &$result) {
-            foreach ($this->config[$Model->alias]['fields'] as $field) {
-                if (isset($result[$Model->alias][$field])) {
-                    $result[$Model->alias][$field] = $this->_unserialize($Model->alias, $result[$Model->alias][$field]);
+	/**
+	 * After find callback. Unserializes all specified fields in each result
+	 *
+	 * @param Model $model Model using this behavior
+	 * @param mixed $results The results of the find operation
+	 * @param boolean $primary Whether this model is being queried directly (vs. being queried as an association)
+	 * @return array
+	 */
+	public function afterFind(Model $Model, $results, $primary = false) {
+		foreach ($results as $key => &$result) {
+			foreach ($this->config[$Model->alias]['fields'] as $field) {
+				if (isset($result[$Model->alias][$field])) {
+					$result[$Model->alias][$field] = $this->_unserialize($Model->alias, $result[$Model->alias][$field]);
+				} elseif (isset($result[$field])) {
+					$result[$field] = $this->_unserialize($Model->alias, $result[$field]);
 				} elseif ($key === $field) {
 					$result = $this->_unserialize($Model->alias, $result);
 				}
-            }
-        }
-        unset($result);
-        return $results;
-    }
+			}
+		}
+		unset($result);
+		return $results;
+	}
 
-    /**
-     * Before save callback. Serializes all specified fields in model data
-     *
-     * @param Model $Model Model using this behavior
-     * @return boolean True
-     */
-    public function beforeSave(Model $Model) {
-        foreach ($this->config[$Model->alias]['fields'] as $field) {
-            if (isset($Model->data[$Model->alias][$field])) {
-                $Model->data[$Model->alias][$field] = $this->_serialize($Model->alias, $Model->data[$Model->alias][$field]);
-            } elseif (isset($Model->data[$field])) {
+	/**
+	 * Before save callback. Serializes all specified fields in model data
+	 *
+	 * @param Model $Model Model using this behavior
+	 * @return boolean True
+	 */
+	public function beforeSave(Model $Model) {
+		foreach ($this->config[$Model->alias]['fields'] as $field) {
+			if (isset($Model->data[$Model->alias][$field])) {
+				$Model->data[$Model->alias][$field] = $this->_serialize($Model->alias, $Model->data[$Model->alias][$field]);
+			} elseif (isset($Model->data[$field])) {
 				$Model->data[$field] = $this->_serialize($Model->alias, $Model->data[$field]);
 			}
-        }
-        return true;
-    }
+		}
+		return true;
+	}
 
-    /**
-     * Invokes serialization. Serialization function is set by
-     * globall config, model config or defaults to `serialize`
-     *
-     * @param string $alias Model using this behavior alias
-     * @param mixed $data Data to serialize
-     * @return string Serialized data
-     */
-    protected function _serialize($alias, $data) {
-        return call_user_func($this->config[$alias]['serialize'], $data);
-    }
+	/**
+	 * After save callback. Unserializes all specified fields in each result
+	 * 
+	 * @param Model $model Model using this behavior
+	 * @param bool $created Is this record created or updated
+	 */
+	public function afterSave(Model $model, $created) {
+		$model->data = $this->afterFind($model, $model->data);
+	}
 
-    /**
-     * Invokes unserialization. Unserialization function is set by
-     * globall config, model config or defaults to `unserialize`
-     *
-     * @param string $alias Model using this behavior alias
-     * @param mixed $data Data to serialize
-     * @return mixed Unserialized data
-     */
-    protected function _unserialize($alias, $data) {
-        return call_user_func($this->config[$alias]['unserialize'], $data);
-    }
+	/**
+	 * Invokes serialization. Serialization function is set by
+	 * globall config, model config or defaults to `serialize`
+	 *
+	 * @param string $alias Model using this behavior alias
+	 * @param mixed $data Data to serialize
+	 * @return string Serialized data
+	 */
+	protected function _serialize($alias, $data) {
+		return call_user_func($this->config[$alias]['serialize'], $data);
+	}
+
+	/**
+	 * Invokes unserialization. Unserialization function is set by
+	 * globall config, model config or defaults to `unserialize`
+	 *
+	 * @param string $alias Model using this behavior alias
+	 * @param mixed $data Data to serialize
+	 * @return mixed Unserialized data
+	 */
+	protected function _unserialize($alias, $data) {
+		return call_user_func($this->config[$alias]['unserialize'], $data);
+	}
 
 }
