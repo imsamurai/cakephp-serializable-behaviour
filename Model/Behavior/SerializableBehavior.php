@@ -61,9 +61,10 @@ class SerializableBehavior extends ModelBehavior {
 	 * Before save callback. Serializes all specified fields in model data
 	 *
 	 * @param Model $Model Model using this behavior
+	 * @param array $options
 	 * @return boolean True
 	 */
-	public function beforeSave(Model $Model) {
+	public function beforeSave(Model $Model, array $options = array()) {
 		foreach ($this->config[$Model->alias]['fields'] as $field) {
 			if (isset($Model->data[$Model->alias][$field])) {
 				$Model->data[$Model->alias][$field] = $this->_serialize($Model->alias, $Model->data[$Model->alias][$field]);
@@ -79,8 +80,9 @@ class SerializableBehavior extends ModelBehavior {
 	 * 
 	 * @param Model $model Model using this behavior
 	 * @param bool $created Is this record created or updated
+	 * @param array $options
 	 */
-	public function afterSave(Model $model, $created) {
+	public function afterSave(Model $model, $created, array $options = array()) {
 		$model->data = $this->afterFind($model, $model->data);
 	}
 
