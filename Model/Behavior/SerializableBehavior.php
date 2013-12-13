@@ -48,7 +48,6 @@ class SerializableBehavior extends ModelBehavior {
 			}
 		}
 		unset($result);
-		debug($results);
 		return $results;
 	}
 
@@ -96,7 +95,6 @@ class SerializableBehavior extends ModelBehavior {
 			$result = $this->_unserialize($Model->alias, $result);
 		} else {
 			foreach ($this->_getAliases($Model) as $alias) {
-				debug($alias);
 				if (isset($result[$alias][$field])) {
 					$result[$alias][$field] = $this->_unserialize($Model->alias, $result[$alias][$field]);
 				} elseif (isset($result[$alias]) && is_array($result[$alias])) {
