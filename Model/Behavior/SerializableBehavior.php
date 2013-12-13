@@ -44,16 +44,11 @@ class SerializableBehavior extends ModelBehavior {
 	public function afterFind(Model $Model, $results, $primary = false) {
 		foreach ($results as $key => &$result) {
 			foreach ($this->config[$Model->alias]['fields'] as $field) {
-				if (isset($result[$Model->alias][$field])) {
-					$result[$Model->alias][$field] = $this->_unserialize($Model->alias, $result[$Model->alias][$field]);
-				} elseif (isset($result[$field])) {
-					$result[$field] = $this->_unserialize($Model->alias, $result[$field]);
-				} elseif ($key === $field) {
-					$result = $this->_unserialize($Model->alias, $result);
-				}
+				$this->_unserializeFindField($field, $key, $result, $Model);
 			}
 		}
 		unset($result);
+		debug($results);
 		return $results;
 	}
 
@@ -84,6 +79,56 @@ class SerializableBehavior extends ModelBehavior {
 	 */
 	public function afterSave(Model $model, $created, $options = array()) {
 		$model->data = $this->afterFind($model, $model->data);
+	}
+
+	/**
+	 * Unserialize one field after find
+	 * 
+	 * @param string $field Field name
+	 * @param string $key Record key
+	 * @param array $result Record data
+	 * @param Model $Model Model using this behavior
+	 */
+	protected function _unserializeFindField($field, $key, &$result, Model $Model) {
+		if (isset($result[$field])) {
+			$result[$field] = $this->_unserialize($Model->alias, $result[$field]);
+		} elseif ($key === $field) {
+			$result = $this->_unserialize($Model->alias, $result);
+		} else {
+			foreach ($this->_getAliases($Model) as $alias) {
+				debug($alias);
+				if (isset($result[$alias][$field])) {
+					$result[$alias][$field] = $this->_unserialize($Model->alias, $result[$alias][$field]);
+				} elseif (isset($result[$alias]) && is_array($result[$alias])) {
+					foreach ($result[$alias] as $_key => &$_result) {
+						$this->_unserializeFindField($field, $_key, $_result, $Model);
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * Return model alias + all model aliases from model association
+	 * (if model have associations with itself)
+	 * 
+	 * @param Model $Model
+	 * @return array
+	 */
+	protected function _getAliases(Model $Model) {
+		$aliases = array(
+			$Model->alias
+		);
+
+		foreach ($Model->associations() as $associationType) {
+			foreach ($Model->$associationType as $associationKey => $association) {
+				if ($association['className'] === $Model->name) {
+					$aliases[] = $associationKey;
+				}
+			}
+		}
+
+		return $aliases;
 	}
 
 	/**
