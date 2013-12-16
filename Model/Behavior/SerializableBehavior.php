@@ -150,6 +150,9 @@ class SerializableBehavior extends ModelBehavior {
 	 * @return mixed Unserialized data
 	 */
 	protected function _unserialize($alias, $data) {
+		if (!is_string($data)) {
+			return $data;
+		}
 		return call_user_func($this->config[$alias]['unserialize'], $data);
 	}
 
