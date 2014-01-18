@@ -1,0 +1,32 @@
+{
+  "name": "imsamurai/cakephp-serializable-behaviour",
+  "description": "Behavior for saving and reading serialized data from/into database",
+  "type": "cakephp-plugin",
+  "keywords": [
+    "cakephp",
+    "serializable",
+    "behaviour",
+    "database"
+  ],
+  "homepage": "http://github.com/imsamurai/cakephp-serializable-behaviour",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Shamray Alexander",
+      "email": "im.samuray@gmail.com",
+      "homepage": "https://imsamurai.me",
+      "role": "Maintainer"
+    }
+  ],
+  "require": {
+    "composer/installers": "*"
+  },
+  "support": {
+    "email": "im.samuray@gmail.com",
+    "issues": "https://github.com/imsamurai/cakephp-serializable-behaviour/issues",
+    "source": "https://github.com/imsamurai/cakephp-serializable-behaviour"
+  },
+  "extra": {
+    "installer-name": "Serializable"
+  }
+}
