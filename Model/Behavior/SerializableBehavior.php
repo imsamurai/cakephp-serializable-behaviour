@@ -30,6 +30,7 @@ class SerializableBehavior extends ModelBehavior {
 			'fields' => array(),
 			'serialize' => 'serialize',
 			'unserialize' => 'unserialize',
+			'aliases' => array()
 		);
 	}
 
@@ -114,8 +115,10 @@ class SerializableBehavior extends ModelBehavior {
 	 * @return array
 	 */
 	protected function _getAliases(Model $Model) {
-		$aliases = array(
+		$aliases = array_merge(array(
+			$Model->name,
 			$Model->alias
+				), $this->config[$Model->alias]['aliases']
 		);
 
 		foreach ($Model->associations() as $associationType) {
