@@ -116,7 +116,7 @@ class SerializableBehavior extends ModelBehavior {
 	 */
 	protected function _getAliases(Model $Model) {
 		$aliases = array_merge(array(
-			$Model->name,
+			//$Model->name,
 			$Model->alias
 				), $this->config[$Model->alias]['aliases']
 		);
