@@ -69,4 +69,4 @@ In this case you must add some configuration to AppModel::afterFind. In basic ca
 		return parent::afterFind($results, $primary);
 	}
 
-And that's all! Now you have data structure with unserialized fields.
+And that's all! Now you have data structure with unserialized fields. 
