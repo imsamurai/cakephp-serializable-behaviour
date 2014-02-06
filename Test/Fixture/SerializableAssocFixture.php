@@ -32,9 +32,9 @@ class SerializableAssocFixture extends CakeTestFixture {
 	 * @var array
 	 */
 	public $fields = array(
-		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'length' => 20, 'key' => 'primary'),
+		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 20, 'key' => 'primary'),
 		'field3' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 100000, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'serializable_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'length' => 20),
+		'serializable_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 20),
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'MyISAM')
 	);
 

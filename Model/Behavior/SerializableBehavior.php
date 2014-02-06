@@ -26,7 +26,7 @@ class SerializableBehavior extends ModelBehavior {
 	 */
 	public function setup(Model $Model, $config = array()) {
 		parent::setup($Model, $config);
-		$this->config[$Model->alias] = $config + (array) Configure::read('Serializable') + array(
+		$this->config[$Model->alias] = $config + (array)Configure::read('Serializable') + array(
 			'fields' => array(),
 			'serialize' => 'serialize',
 			'unserialize' => 'unserialize',

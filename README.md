@@ -1,5 +1,7 @@
 CakePHP Serializable Behaviour
 ==============================
+[![Build Status](https://travis-ci.org/imsamurai/cakephp-serializable-behaviour.png)](https://travis-ci.org/imsamurai/cakephp-serializable-behaviour) [![Coverage Status](https://coveralls.io/repos/imsamurai/cakephp-serializable-behaviour/badge.png?branch=master)](https://coveralls.io/r/imsamurai/cakephp-serializable-behaviour?branch=master) [![Latest Stable Version](https://poser.pugx.org/imsamurai/cakephp-serializable-behaviour/v/stable.png)](https://packagist.org/packages/imsamurai/cakephp-serializable-behaviour) [![Total Downloads](https://poser.pugx.org/imsamurai/cakephp-serializable-behaviour/downloads.png)](https://packagist.org/packages/imsamurai/cakephp-serializable-behaviour) [![Latest Unstable Version](https://poser.pugx.org/imsamurai/cakephp-serializable-behaviour/v/unstable.png)](https://packagist.org/packages/imsamurai/cakephp-serializable-behaviour) [![License](https://poser.pugx.org/imsamurai/cakephp-serializable-behaviour/license.png)](https://packagist.org/packages/imsamurai/cakephp-serializable-behaviour)
+
 
 Serializable Behaviour for CakePHP 2.1+
 

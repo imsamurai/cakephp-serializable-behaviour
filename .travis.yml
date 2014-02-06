@@ -1,0 +1,53 @@
+language: php
+
+php:
+  - 5.4
+  - 5.5
+  
+env:
+  global:
+    - PLUGIN_NAME=Serializable
+    - PLUGIN_PATH=Plugin/Serializable
+    - REQUIRE=""
+    - DB=mysql
+    - CAKE_VERSION=2.4
+  matrix:
+    - CAKE_VERSION=2.1
+    - CAKE_VERSION=2.2
+    - CAKE_VERSION=2.3
+    - CAKE_VERSION=2.4
+    - CAKE_VERSION=master
+
+matrix:
+  include:
+    - php: 5.4
+      env:
+        - COVERALLS=1
+    - php: 5.4
+      env:
+        - PHPCS=1
+    - php: 5.4
+      env:
+        - FOC_VALIDATE=1
+
+before_script:
+    - git clone https://github.com/FriendsOfCake/travis.git --depth 1 ../travis
+    - ../travis/before_script.sh
+    - if [ "$PHPCS" != 1 ]; then
+            echo "
+                CakePlugin::load('Serializable');
+            " >> ../cakephp/app/Config/bootstrap.php;
+      fi
+    - if [ "$PHPCS" = 1 ]; then
+        rm -rf ~/.phpenv/versions/$(phpenv version-name)/pear/PHP/CodeSniffer/Standards/CakePHP;
+        git clone https://github.com/imsamurai/cakephp-codesniffer.git --depth 1 ~/.phpenv/versions/$(phpenv version-name)/pear/PHP/CodeSniffer/Standards/CakePHP;
+      fi
+
+script:
+  - ../travis/script.sh
+
+after_success:
+  - ../travis/after_success.sh
+
+notifications:
+  email: im.samuray@gmail.com
