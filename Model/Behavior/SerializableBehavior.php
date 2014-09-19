@@ -8,6 +8,9 @@
 
 /**
  * Serializable Behavior
+ * 
+ * @package Serializable
+ * @subpackage Model.Behavior
  */
 class SerializableBehavior extends ModelBehavior {
 

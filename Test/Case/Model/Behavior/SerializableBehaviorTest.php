@@ -6,10 +6,14 @@
  * Time: 1:40:11 PM
  * Format: http://book.cakephp.org/2.0/en/development/testing.html
  */
+
 require_once dirname(dirname(__FILE__)) . DS . 'models.php';
 
 /**
  * SerializableBehaviorTest
+ * 
+ * @package SerializableTest
+ * @subpackage Model.Behavior
  */
 class SerializableBehaviorTest extends CakeTestCase {
 
@@ -58,6 +62,9 @@ class SerializableBehaviorTest extends CakeTestCase {
 		$this->assertSame($field2, $Model->field('field2'));
 	}
 
+	/**
+	 * Test associated by belongsTo
+	 */
 	public function testBelongsToAssoc() {
 		$data = array(
 			'SerializableBelongsToAssocTestModel' => array(
@@ -83,7 +90,10 @@ class SerializableBehaviorTest extends CakeTestCase {
 		$data['SerializableBelongsToAssocTestModel']['serializable_id'] = 11;
 		$this->assertEqual($data, $storedData);
 	}
-
+	
+	/**
+	 * Test associated by belongsTo to itself
+	 */
 	public function testBelongsToSelfAssoc() {
 		$data = array(
 			'SerializableBelongsToSelfAssocTestModel' => array(

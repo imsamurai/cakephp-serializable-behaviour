@@ -9,6 +9,9 @@
 
 /**
  * SerializableFixture
+ * 
+ * @package SerializableTest
+ * @subpackage Fixture
  */
 class SerializableFixture extends CakeTestFixture {
 

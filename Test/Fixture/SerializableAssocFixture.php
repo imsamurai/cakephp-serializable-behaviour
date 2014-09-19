@@ -9,6 +9,9 @@
 
 /**
  * SerializableAssocFixture
+ * 
+ * @package SerializableTest
+ * @subpackage Fixture
  */
 class SerializableAssocFixture extends CakeTestFixture {
 

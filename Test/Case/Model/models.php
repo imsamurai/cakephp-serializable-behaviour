@@ -5,10 +5,16 @@
  * Date: Jan 19, 2014
  * Time: 1:45:01 PM
  * Format: http://book.cakephp.org/2.0/en/views.html
- * 
  */
+
 App::uses('Model', 'Model');
 
+/**
+ * Test model class
+ * 
+ * @package SerializableTest
+ * @subpackage Model
+ */
 class SerializableTestAppModel extends Model {
 
 	/**
@@ -27,6 +33,12 @@ class SerializableTestAppModel extends Model {
 
 }
 
+/**
+ * Test model class
+ * 
+ * @package SerializableTest
+ * @subpackage Model
+ */
 class SerializableSimpleTestModel extends SerializableTestAppModel {
 
 	/**
@@ -67,6 +79,12 @@ class SerializableSimpleTestModel extends SerializableTestAppModel {
 
 }
 
+/**
+ * Test model class
+ * 
+ * @package SerializableTest
+ * @subpackage Model
+ */
 class SerializableBelongsToAssocTestModel extends SerializableTestAppModel {
 
 	/**
@@ -117,6 +135,12 @@ class SerializableBelongsToAssocTestModel extends SerializableTestAppModel {
 
 }
 
+/**
+ * Test model class
+ * 
+ * @package SerializableTest
+ * @subpackage Model
+ */
 class SerializableBelongsToSelfAssocTestModel extends SerializableTestAppModel {
 
 	/**
@@ -167,53 +191,3 @@ class SerializableBelongsToSelfAssocTestModel extends SerializableTestAppModel {
 	);
 
 }
-
-//class SerializableHasOneAssocTestModel extends SerializableTestAppModel {
-//
-//	/**
-//	 * {@inheritdoc}
-//	 *
-//	 * @var string 
-//	 */
-//	public $name = 'SerializableBelongsToAssocTestModel';
-//
-//	/**
-//	 * {@inheritdoc}
-//	 *
-//	 * @var string 
-//	 */
-//	public $useTable = 'serializable_assoc';
-//
-//	/**
-//	 * {@inheritdoc}
-//	 *
-//	 * @var int
-//	 */
-//	public $recursive = -1;
-//
-//	/**
-//	 * {@inheritdoc}
-//	 * 
-//	 * @var array 
-//	 */
-//	public $actsAs = array(
-//		'Containable',
-//		'Serializable.Serializable' => array(
-//			'fields' => array(
-//				'field3'
-//			)
-//		)
-//	);
-//
-//	/**
-//	 * {@inheritdoc}
-//	 * 
-//	 * @var array 
-//	 */
-//	public $belongsTo = array(
-//		'SerializableSimpleTestModel' => array(
-//			'foreignKey' => 'serializable_id'
-//		)
-//	);
-//
-//}
