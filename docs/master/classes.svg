@@ -45,80 +45,80 @@
 <path fill="none" stroke="black" d="M616.381,-389.905C598.273,-385.626 580.398,-378.523 566,-367 503.531,-317.006 557.929,-250.113 494,-202 474.782,-187.536 450.674,-180.096 426.802,-176.658"/>
 <polygon fill="none" stroke="black" points="426.949,-173.151 416.601,-175.422 426.107,-180.1 426.949,-173.151"/>
 </g>
+<!-- \\AllSerializableTest -->
+<g id="node4" class="node"><title>\\AllSerializableTest</title>
+<polygon fill="none" stroke="black" points="778,-358 634,-358 634,-322 778,-322 778,-358"/>
+<text text-anchor="middle" x="706" y="-337.1" font-family="Courier,monospace" font-size="11.00">AllSerializableTest</text>
+</g>
+<!-- \\PHPUnit_Framework_TestSuite -->
+<g id="node15" class="node"><title>\\PHPUnit_Framework_TestSuite</title>
+<ellipse fill="none" stroke="black" cx="327" cy="-126" rx="166.877" ry="18.3848"/>
+<text text-anchor="middle" x="327" y="-122.4" font-family="Times Roman,serif" font-size="14.00" fill="gray">\PHPUnit_Framework_TestSuite</text>
+</g>
+<!-- \\AllSerializableTest&#45;&gt;\\PHPUnit_Framework_TestSuite -->
+<g id="edge7" class="edge"><title>\\AllSerializableTest&#45;&gt;\\PHPUnit_Framework_TestSuite</title>
+<path fill="none" stroke="black" d="M633.222,-338.985C609.747,-335.457 584.929,-327.973 566,-313 504.841,-264.623 555.883,-200.447 494,-153 487.691,-148.162 480.848,-144.046 473.656,-140.553"/>
+<polygon fill="none" stroke="black" points="474.935,-137.291 464.373,-136.453 472.107,-143.694 474.935,-137.291"/>
+</g>
 <!-- \\SerializableTestAppModel -->
-<g id="node4" class="node"><title>\\SerializableTestAppModel</title>
+<g id="node5" class="node"><title>\\SerializableTestAppModel</title>
 <polygon fill="none" stroke="black" points="416,-574 238,-574 238,-538 416,-538 416,-574"/>
 <text text-anchor="middle" x="327" y="-553.1" font-family="Courier,monospace" font-size="11.00">SerializableTestAppModel</text>
 </g>
 <!-- \\Model -->
-<g id="node15" class="node"><title>\\Model</title>
+<g id="node17" class="node"><title>\\Model</title>
 <ellipse fill="none" stroke="black" cx="44" cy="-556" rx="43.8406" ry="18.3848"/>
 <text text-anchor="middle" x="44" y="-552.4" font-family="Times Roman,serif" font-size="14.00" fill="gray">\Model</text>
 </g>
 <!-- \\SerializableTestAppModel&#45;&gt;\\Model -->
-<g id="edge7" class="edge"><title>\\SerializableTestAppModel&#45;&gt;\\Model</title>
+<g id="edge9" class="edge"><title>\\SerializableTestAppModel&#45;&gt;\\Model</title>
 <path fill="none" stroke="black" d="M237.457,-556C191.821,-556 137.813,-556 98.4746,-556"/>
 <polygon fill="none" stroke="black" points="98.2965,-552.5 88.2965,-556 98.2965,-559.5 98.2965,-552.5"/>
 </g>
 <!-- \\SerializableSimpleTestModel -->
-<g id="node5" class="node"><title>\\SerializableSimpleTestModel</title>
+<g id="node6" class="node"><title>\\SerializableSimpleTestModel</title>
 <polygon fill="none" stroke="black" points="805,-628 607,-628 607,-592 805,-592 805,-628"/>
 <text text-anchor="middle" x="706" y="-607.1" font-family="Courier,monospace" font-size="11.00">SerializableSimpleTestModel</text>
 </g>
 <!-- \\SerializableSimpleTestModel&#45;&gt;\\SerializableTestAppModel -->
-<g id="edge9" class="edge"><title>\\SerializableSimpleTestModel&#45;&gt;\\SerializableTestAppModel</title>
+<g id="edge11" class="edge"><title>\\SerializableSimpleTestModel&#45;&gt;\\SerializableTestAppModel</title>
 <path fill="none" stroke="black" d="M606.422,-595.812C550.986,-587.914 482.183,-578.111 426.723,-570.209"/>
 <polygon fill="none" stroke="black" points="426.923,-566.702 416.529,-568.756 425.935,-573.632 426.923,-566.702"/>
 </g>
 <!-- \\SerializableBelongsToAssocTestModel -->
-<g id="node6" class="node"><title>\\SerializableBelongsToAssocTestModel</title>
+<g id="node7" class="node"><title>\\SerializableBelongsToAssocTestModel</title>
 <polygon fill="none" stroke="black" points="832,-574 580,-574 580,-538 832,-538 832,-574"/>
 <text text-anchor="middle" x="706" y="-553.1" font-family="Courier,monospace" font-size="11.00">SerializableBelongsToAssocTestModel</text>
 </g>
 <!-- \\SerializableBelongsToAssocTestModel&#45;&gt;\\SerializableTestAppModel -->
-<g id="edge11" class="edge"><title>\\SerializableBelongsToAssocTestModel&#45;&gt;\\SerializableTestAppModel</title>
+<g id="edge13" class="edge"><title>\\SerializableBelongsToAssocTestModel&#45;&gt;\\SerializableTestAppModel</title>
 <path fill="none" stroke="black" d="M579.272,-556C529.652,-556 473.56,-556 426.889,-556"/>
 <polygon fill="none" stroke="black" points="426.774,-552.5 416.774,-556 426.774,-559.5 426.774,-552.5"/>
 </g>
 <!-- \\SerializableBelongsToSelfAssocTestModel -->
-<g id="node7" class="node"><title>\\SerializableBelongsToSelfAssocTestModel</title>
+<g id="node8" class="node"><title>\\SerializableBelongsToSelfAssocTestModel</title>
 <polygon fill="none" stroke="black" points="846,-520 566,-520 566,-484 846,-484 846,-520"/>
 <text text-anchor="middle" x="706" y="-499.1" font-family="Courier,monospace" font-size="11.00">SerializableBelongsToSelfAssocTestModel</text>
 </g>
 <!-- \\SerializableBelongsToSelfAssocTestModel&#45;&gt;\\SerializableTestAppModel -->
-<g id="edge13" class="edge"><title>\\SerializableBelongsToSelfAssocTestModel&#45;&gt;\\SerializableTestAppModel</title>
+<g id="edge15" class="edge"><title>\\SerializableBelongsToSelfAssocTestModel&#45;&gt;\\SerializableTestAppModel</title>
 <path fill="none" stroke="black" d="M589.146,-520.041C558.227,-524.705 524.867,-529.638 494,-534 472.28,-537.07 448.95,-540.229 426.819,-543.163"/>
 <polygon fill="none" stroke="black" points="426.2,-539.714 416.745,-544.493 427.117,-546.653 426.2,-539.714"/>
 </g>
 <!-- \\SerializableBehaviorTest -->
-<g id="node8" class="node"><title>\\SerializableBehaviorTest</title>
-<polygon fill="none" stroke="black" points="795,-358 617,-358 617,-322 795,-322 795,-358"/>
-<text text-anchor="middle" x="706" y="-337.1" font-family="Courier,monospace" font-size="11.00">SerializableBehaviorTest</text>
+<g id="node9" class="node"><title>\\SerializableBehaviorTest</title>
+<polygon fill="none" stroke="black" points="795,-304 617,-304 617,-268 795,-268 795,-304"/>
+<text text-anchor="middle" x="706" y="-283.1" font-family="Courier,monospace" font-size="11.00">SerializableBehaviorTest</text>
 </g>
 <!-- \\CakeTestCase -->
-<g id="node20" class="node"><title>\\CakeTestCase</title>
-<ellipse fill="none" stroke="black" cx="327" cy="-126" rx="82.0244" ry="18.3848"/>
-<text text-anchor="middle" x="327" y="-122.4" font-family="Times Roman,serif" font-size="14.00" fill="gray">\CakeTestCase</text>
+<g id="node22" class="node"><title>\\CakeTestCase</title>
+<ellipse fill="none" stroke="black" cx="327" cy="-72" rx="82.0244" ry="18.3848"/>
+<text text-anchor="middle" x="327" y="-68.4" font-family="Times Roman,serif" font-size="14.00" fill="gray">\CakeTestCase</text>
 </g>
 <!-- \\SerializableBehaviorTest&#45;&gt;\\CakeTestCase -->
-<g id="edge15" class="edge"><title>\\SerializableBehaviorTest&#45;&gt;\\CakeTestCase</title>
-<path fill="none" stroke="black" d="M616.48,-335.781C598.365,-331.509 580.464,-324.441 566,-313 504.841,-264.623 555.883,-200.447 494,-153 472.61,-136.6 445.093,-128.488 418.592,-124.83"/>
-<polygon fill="none" stroke="black" points="418.841,-121.336 408.5,-123.638 418.02,-128.287 418.841,-121.336"/>
-</g>
-<!-- \\AllSerializableTest -->
-<g id="node9" class="node"><title>\\AllSerializableTest</title>
-<polygon fill="none" stroke="black" points="778,-304 634,-304 634,-268 778,-268 778,-304"/>
-<text text-anchor="middle" x="706" y="-283.1" font-family="Courier,monospace" font-size="11.00">AllSerializableTest</text>
-</g>
-<!-- \\PHPUnit_Framework_TestSuite -->
-<g id="node22" class="node"><title>\\PHPUnit_Framework_TestSuite</title>
-<ellipse fill="none" stroke="black" cx="327" cy="-72" rx="166.877" ry="18.3848"/>
-<text text-anchor="middle" x="327" y="-68.4" font-family="Times Roman,serif" font-size="14.00" fill="gray">\PHPUnit_Framework_TestSuite</text>
-</g>
-<!-- \\AllSerializableTest&#45;&gt;\\PHPUnit_Framework_TestSuite -->
-<g id="edge17" class="edge"><title>\\AllSerializableTest&#45;&gt;\\PHPUnit_Framework_TestSuite</title>
-<path fill="none" stroke="black" d="M633.222,-284.985C609.747,-281.457 584.929,-273.973 566,-259 504.841,-210.623 555.883,-146.447 494,-99 487.691,-94.1625 480.848,-90.0462 473.656,-86.5526"/>
-<polygon fill="none" stroke="black" points="474.935,-83.2911 464.373,-82.453 472.107,-89.6945 474.935,-83.2911"/>
+<g id="edge17" class="edge"><title>\\SerializableBehaviorTest&#45;&gt;\\CakeTestCase</title>
+<path fill="none" stroke="black" d="M616.48,-281.781C598.365,-277.509 580.464,-270.441 566,-259 504.841,-210.623 555.883,-146.447 494,-99 472.61,-82.5996 445.093,-74.4882 418.592,-70.8303"/>
+<polygon fill="none" stroke="black" points="418.841,-67.3355 408.5,-69.6385 418.02,-74.2872 418.841,-67.3355"/>
 </g>
 <!-- \\SerializableBehavior -->
 <g id="node10" class="node"><title>\\SerializableBehavior</title>
