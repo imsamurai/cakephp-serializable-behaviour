@@ -9,7 +9,7 @@ env:
   global:
     - PLUGIN_NAME=Serializable
     - PLUGIN_PATH=Plugin/Serializable
-    - REQUIRE="imsamurai/cakephp-environment:dev-master phpdocumentor/phpdocumentor:2.*"
+    - REQUIRE="phpdocumentor/phpdocumentor:2.*"
     - DB=mysql
     - CAKE_VERSION=2.5
     - secure: ihPDL7+e2IKrCHOSHWtbct4Bj17lCgzL99p9wG9heoJ44tUvt4/V38/0gnkIc/W5cdZBStJ/1L9oqf1uvl1j7kRQw+kbmTCkRHc7lqwadtc6g4wSzS25Uv7QwF85h5QsA/wJwbBywJdK1FvJawC7iWT/WmgfxOcz+K55Iy3GbHY=
