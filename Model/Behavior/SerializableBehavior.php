@@ -40,7 +40,7 @@ class SerializableBehavior extends ModelBehavior {
 	/**
 	 * After find callback. Unserializes all specified fields in each result
 	 *
-	 * @param Model $model Model using this behavior
+	 * @param Model $Model Model using this behavior
 	 * @param mixed $results The results of the find operation
 	 * @param boolean $primary Whether this model is being queried directly (vs. being queried as an association)
 	 * @return array

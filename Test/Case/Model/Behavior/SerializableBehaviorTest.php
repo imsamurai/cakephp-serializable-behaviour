@@ -7,6 +7,9 @@
  * Format: http://book.cakephp.org/2.0/en/development/testing.html
  */
 
+/**
+ * Requite models for test
+ */
 require_once dirname(dirname(__FILE__)) . DS . 'models.php';
 
 /**
