@@ -126,7 +126,7 @@ class SerializableBehaviorTest extends CakeTestCase {
 	/**
 	 * Test merging
 	 */
-	public function testMerge(){
+	public function testMerge() {
 		$field1 = array(
 			array(
 				'somedata' => array(
