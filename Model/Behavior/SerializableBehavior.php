@@ -65,12 +65,12 @@ class SerializableBehavior extends ModelBehavior {
 	 */
 	public function beforeSave(Model $Model, $options = array()) {
 		$currentData = false;
-		if($this->config[$Model->alias]['merge']){
+		if ($this->config[$Model->alias]['merge']) {
 			$Model->recursive = -1;
 			$currentData = $Model->find('first',
 				array(
 					'conditions' => array($Model->primaryKey => (isset($Model->data[$Model->alias][$Model->primaryKey]) ? $Model->data[$Model->alias][$Model->primaryKey] : $Model->data[$Model->primaryKey])),
-				    'fields' => $this->config[$Model->alias]['fields']
+					'fields' => $this->config[$Model->alias]['fields']
 				)
 			);
 		}
