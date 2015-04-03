@@ -76,10 +76,14 @@ class SerializableBehavior extends ModelBehavior {
 		}
 		foreach ($this->config[$Model->alias]['fields'] as $field) {
 			if (isset($Model->data[$Model->alias][$field])) {
-				if($currentData) $Model->data[$Model->alias][$field] = array_merge($currentData[$Model->alias][$field], $Model->data[$Model->alias][$field]);
+				if ($currentData) {
+					$Model->data[$Model->alias][$field] = array_merge($currentData[$Model->alias][$field], $Model->data[$Model->alias][$field]);
+				}
 				$Model->data[$Model->alias][$field] = $this->_serialize($Model->alias, $Model->data[$Model->alias][$field]);
 			} elseif (isset($Model->data[$field])) {
-				if($currentData) $Model->data[$field] = array_merge($currentData[$Model->alias][$field], $Model->data[$field]);
+				if ($currentData) {
+					$Model->data[$field] = array_merge($currentData[$Model->alias][$field], $Model->data[$field]);
+				}
 				$Model->data[$field] = $this->_serialize($Model->alias, $Model->data[$field]);
 			}
 		}
