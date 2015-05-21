@@ -40,10 +40,12 @@ Attach behaviour to model:
 	        'fields' => <array of field names>,
 	        'serialize' => <valid callable>, // optional
 	        'unserialize' => <valid callable> // optional
+	        'merge' => true // optional
 	      )
 	);
 
 By default serialization uses function `serialize`, unserialization - `unserialize`
+Merging is off by default, turning it on will do a recursive merge on existing records so you can add data without replacing the entire serialized object.
 
 ## Advanced usage
 
