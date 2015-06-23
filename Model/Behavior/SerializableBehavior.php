@@ -33,7 +33,8 @@ class SerializableBehavior extends ModelBehavior {
 			'fields' => array(),
 			'serialize' => 'serialize',
 			'unserialize' => 'unserialize',
-			'aliases' => array()
+			'aliases' => array(),
+			'merge' => false
 		);
 	}
 
@@ -63,10 +64,26 @@ class SerializableBehavior extends ModelBehavior {
 	 * @return boolean True
 	 */
 	public function beforeSave(Model $Model, $options = array()) {
+		$currentData = false;
+		if ($this->config[$Model->alias]['merge'] && (isset($Model->data[$Model->alias][$Model->primaryKey]) || isset($Model->data[$Model->primaryKey]))) {
+			$Model->recursive = -1;
+			$currentData = $Model->find('first',
+				array(
+					'conditions' => array($Model->primaryKey => (isset($Model->data[$Model->alias][$Model->primaryKey]) ? $Model->data[$Model->alias][$Model->primaryKey] : $Model->data[$Model->primaryKey])),
+					'fields' => $this->config[$Model->alias]['fields']
+				)
+			);
+		}
 		foreach ($this->config[$Model->alias]['fields'] as $field) {
 			if (isset($Model->data[$Model->alias][$field])) {
+				if ($currentData) {
+					$Model->data[$Model->alias][$field] = array_replace_recursive((array)$currentData[$Model->alias][$field], (array)$Model->data[$Model->alias][$field]);
+				}
 				$Model->data[$Model->alias][$field] = $this->_serialize($Model->alias, $Model->data[$Model->alias][$field]);
 			} elseif (isset($Model->data[$field])) {
+				if ($currentData) {
+					$Model->data[$field] = array_replace_recursive($currentData[$Model->alias][$field], $Model->data[$field]);
+				}
 				$Model->data[$field] = $this->_serialize($Model->alias, $Model->data[$field]);
 			}
 		}

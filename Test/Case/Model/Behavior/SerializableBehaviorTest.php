@@ -123,4 +123,40 @@ class SerializableBehaviorTest extends CakeTestCase {
 		$this->assertEqual($data, $storedData);
 	}
 
+	/**
+	 * Test merging
+	 */
+	public function testMerge() {
+		$field1 = array(
+			array(
+				'somedata' => array(
+					'k' => 1
+				)
+			)
+		);
+		$field1merge = array(
+			array(
+				'moredata' => array(
+					'm' => 2
+				)
+			)
+		);
+
+		$Model = ClassRegistry::init('SerializableSimpleTestModel');
+		$Model->Behaviors->load('Serializable.Serializable', array('merge' => true, 'fields' => array('field1', 'field2')));
+		$success = $Model->save(compact('field1'));
+
+		$this->assertTrue((bool)$success);
+		$data = $Model->read(array('field1', 'field2'), $Model->id);
+		$this->assertSame($field1, $data[$Model->alias]['field1']);
+
+		$success = $Model->save(array('id' => $Model->id, 'field1' => $field1merge));
+		$this->assertTrue((bool)$success);
+
+		$data = $Model->read(array('field1'), $Model->id);
+		$this->assertSame(array_replace_recursive($field1, $field1merge), $data[$Model->alias]['field1']);
+
+		$Model->Behaviors->load('Serializable.Serializable', array('merge' => false));
+	}
+
 }
