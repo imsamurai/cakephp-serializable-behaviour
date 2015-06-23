@@ -36,8 +36,8 @@ class SerializableFixture extends CakeTestFixture {
 	 */
 	public $fields = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 20, 'key' => 'primary'),
-		'field1' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 100000, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'field2' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 100000, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'field1' => array('type' => 'text', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'field2' => array('type' => 'text', 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'MyISAM')
 	);
 
